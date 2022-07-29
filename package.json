@@ -1,24 +1,16 @@
 {
-  "name": "javascript-professional",
+  "name": "platzi-media-player",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Proyecto del Curso Profesional de JavaScript de la Escuela de JavaScript de Platzi.",
+  "license": "MIT",
+  "author": "Richard B. Kaufman López <richardbkaufman@gmail.com>",
+  "keywords": [
+    "platzi"
+  ],
   "scripts": {
-    "start" : "live-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LuisJoseTrujilloP/Javascript-Professional.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LuisJoseTrujilloP/Javascript-Professional/issues"
-  },
-  "homepage": "https://github.com/LuisJoseTrujilloP/Javascript-Professional#readme",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.1"
   }
 }
