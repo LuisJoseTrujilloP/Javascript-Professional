@@ -1,0 +1,273 @@
+<html>
+  <head>
+    <title>Prototype</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      
+
+
+   
+      // TODO LO QUE ESTABA EN heroMetods paso a ser parte de hero.saludar, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //                   PROTOTYPE
+      
+      // es un concepto que se aparte de como se manejan los objetos en otroos lenguajes
+      // de programacion, si queremos en Javba crear una clase con instancie a otra podemos
+      // heradando las propiedades de la clase
+      // Un objeto común y corriente
+      // como logramos el modelo de herancia prototypal de Javascript
+
+      // en Javascript todos son objetos
+   
+
+
+
+
+
+      // const Zelda = {
+      //   name: 'Zelda',
+      // };
+
+      // Zelda.saludar = function() {
+      //   console.log(`Hola soy ${this.name}`);
+      // };
+
+      // Zelda.saludar();
+
+      // const link = {
+      //   name: 'Link',
+      // };
+
+      // link.saludar = function() {
+      //   console.log(`Hola soy ${this.name}`);
+      // };
+
+      // link.saludar();
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      // Seamos un poco más eficientes
+      
+      // 1 crear funcion constructora de heros   F const Hero {} que contenga el obj,
+      // y su funcionalidad expresada con la variable establecida, esta vez Hero
+      // recuerda usar  hero para anadirle una herencia prototipal con .saludar, para
+      // luego usar esta herencia para llamarla afuera como hero.saludar(y el input)
+ 
+
+
+      // 2. Crear una constante llamada Zelda, y esta la igualamos a nuestra funcion
+      // constructora de heroes, Hero("y pasamos el input") 
+      // asi por cada elemento nuevo que queramos agregar, por lo que no hay que
+      // crear una funcion por cada elemento nuevo agregado
+
+   
+      // Aun podemos mejorar más y evitar tener que crear la misma función cada vez
+      
+      
+      // Ahora para se mas eficientes, vamos a agregar esa funcion a un objeto
+      // llamado heroMetods, de esta forma en nuestra funcion constructora
+      // vamos a llamar a heroMetos.saludar
+      
+
+
+
+
+
+
+
+
+
+      // const heroMethods = {
+      //   saludar: function() {
+      //     console.log(`Me llamo ${this.name}`);
+      //   },
+      // };
+
+
+
+
+
+      // dentro de nuestra funcion constructora vamos ahora no a llamar la funcion
+      // completa desde 0 sino vamos a usar la herencia prototipal
+      // para llamar a al metodo con heroMethods.saludar ahora, esto debe ser
+      // definido como un elemento u objeto dentro del prototype de nuestra funcion Hero
+      
+      // para luego poder igualar nuestro nuevo item a  Hero('Zelda') for example
+      // como lo hacemos ?  determinamos como hero.saludar = heroMethods.saludar;
+      // que estamos haciendo aqui ?, basicamente, estamos igualando este metodo dentro
+      // de  la funcion, al metodo creado afuera en el objeto contenedor de Methods
+
+
+
+
+
+      // function Hero(name) {
+      //   const hero = {
+      //     name: name,
+      //   };
+      //   hero.saludar = heroMethods.saludar;
+      //   return hero;
+      // }
+
+      // const Zelda = Hero('Zelda');
+      // Zelda.saludar();
+
+      // const link = Hero('Link');
+      // link.saludar();
+
+
+
+
+
+//          THE BEST PRACTICE PARA CREAR Y MANIPULAR FUNCIONES EN JAVASCRIPT
+
+
+//                                   Object.create
+
+
+      
+
+
+// QUE HACE ?  basicamente, reutiliza el esquema de un objeto, para crear uno nuevo
+// este nuevo objeto le va a dar todas las propiedades del objeto que le pasemos
+
+    
+
+      // Los métodos de hero dentro de Hero
+      // const heroMethods = {
+      //   saludar: function() {
+      //     console.log(`Soy superheroe! ${this.name}`);
+      //   },
+      // };
+
+      // function Hero(name) {
+      //   const hero = Object.create(Hero.prototype);
+      //   hero.name = name;
+
+      //   return hero;
+      // }
+
+      // Hero.prototype.saludar = function() {
+      //   console.log(`Soy superheroina! ${this.name}`);
+      // };
+
+      // const Zelda = Hero('Zelda');
+      // Zelda.saludar();
+
+      // const link = Hero('Link');
+      // link.saludar();
+
+
+      // todas las funciones tienen un prototype
+     
+      //  const heroMethods = {
+      //   saludar: function() {
+      //     console.log(`Soy superheroe! ${this.name}`);
+      //   },
+      // };
+
+      // function Hero(name) {
+
+      //   // fig 1-* 
+      //   // como lo podemos ver aqui, esta vez estamos llamando no a las propiedades
+      //   // de Hero, sino a las propiedades de .prototype dentro de Hero, donde
+      //   // esta asignada nuestra funcion saludar
+      //   const hero = Object.create(Hero.prototype);
+      //   hero.name = name;
+
+      //   return hero;
+      // }
+
+
+      // // ANADIMOS LOS METODOS DEL SALUDO PERO ESTA VEZ AL PROTOTYPE
+      // // DE NUESTRA FUNCION HERO
+      // // al hacer esto debemos usar Object.create en el prototype de hero fig 1-*
+
+      // Hero.prototype.saludar = function() {
+      //   console.log(`Soy superheroina! ${this.name}`);
+      // };
+
+
+      // const Zelda = Hero('Zelda');
+      // Zelda.saludar();
+
+      // const link = Hero('Link');
+      // link.saludar();
+
+
+
+
+
+                // new es un atajo (azucar sintactica) para llevar Hero.prototype al objeto que estamos creando
+
+
+
+    function Hero(name) {
+
+
+      // const hero = Object.create(Hero.prototype);
+      this.name = name;
+      // return hero;
+
+
+    }
+
+// si te das cuenta esta vez la funcion esta creada no apartir de un objeto nuevo
+// sino esta creada en un objeto ya establecido por js como default 
+// este objeto es llamado prototype, y de esta forma asignamos
+// a Hero(nombre de nuestra funcion).prototype(objetodefault que no da Js).saludar(que seria
+// el nombre de la propiedad o funcion u objeto que estamos asignando)
+
+    Hero.prototype.saludar = function() {
+      console.log(`Soy superheroina! ${this.name}`);
+    };
+
+
+    // usamos new para omitir Object.create()
+
+    const Zelda = new Hero('Zelda');
+    Zelda.saludar();
+
+    const link = new Hero('Link');
+    link.saludar();
+
+
+
+    // de esta manera pasamos de optimizar la creacion de un objeto
+    // a  optimizar toda la funcionalidad usando objetos defaul y la herencia protoypal
+
+
+
+    </script>
+  </body>
+</html>
